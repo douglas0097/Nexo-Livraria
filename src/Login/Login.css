@@ -24,47 +24,68 @@
     z-index: 1; 
 }
 
-#imagem-logo {
-    width: 50%;
-}
-
 #login-container-content {
     position: relative;
     z-index: 2;         
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #af9a6c;
+    color: #A18064;
+    gap: 1.3rem;
+    #imagem-logo{
+        width: 35vh;
+    }
 }
 
 #form-container {
-    margin-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.801);
+    background-color: rgba(217, 217, 217, 0.750);
     border-radius: 20px;
-    width:600px ;
-    height: 280px;
+    width: 35vh;
+    .login-title{
+        padding: 2rem;
+    }
+    .text-form{
+        color: black;
+        text-align: left;
+    }
+    .text-link-recuperar{
+        font-size: 14px;
+    }
+    .text-link-criar{
+        font-size: 14px;
+        color: black;
+        padding-top: 2rem;
+    }
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
     gap: 7px;
-    width: 50%;
-    
+    width: 90%;
+    padding-bottom: 1rem;
     input{
-        height: 25px;
-        border-radius: 6px;
+        all: unset;
+        height: 40px;
+        border-radius: 4px;
+        border: none;
+        background-color: white;
+        padding-left: 10px;
+        color: black;
+        text-align: left;
+        font-size: 14px;
     }
 }
 
 .login-form button {
-    background-color: #886f3a;
+    background-color: #A18064;
     color: white;
     cursor: pointer;
     transition: background-color 0.2s;
+    margin-bottom: 10px;
 }
 
 .login-form button:hover {
