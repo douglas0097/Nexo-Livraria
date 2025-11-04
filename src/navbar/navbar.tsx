@@ -1,8 +1,5 @@
 import NavImg from '../assets/mini_logo_nexo.png'
-import UserImg from '../assets/user_foto.png'
-import Carrinho from '../assets/carrinho.png'
-import Notificacao from '../assets/notificacao.png'
-import PesquisaImg from '../assets/image 5.png'
+
 import './navbar.css'
 import { FaSearch, FaUser, FaShoppingCart, FaBell } from 'react-icons/fa';
 
