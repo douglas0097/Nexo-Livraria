@@ -12,7 +12,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     color: #e0e0e0;
-    z-index: 2;
+    z-index: 5;
 }
 
 .navbar-logo {
