@@ -9,7 +9,7 @@ function Navbar() {
     <div className='nav-container'>
 
       <div className="navbar-lesft">
-        <a href="/">
+        <a href="/home">
           <img src={NavImg} alt="Nexo" className='navbar-logo' />
         </a>
       </div>
