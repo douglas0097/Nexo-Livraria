@@ -1,7 +1,8 @@
 import NavImg from '../assets/mini_logo_nexo.png'
+import { Link } from 'react-router-dom';
+import { FaSearch, FaUser, FaShoppingCart, FaBell } from 'react-icons/fa';
 
 import './navbar.css'
-import { FaSearch, FaUser, FaShoppingCart, FaBell } from 'react-icons/fa';
 
 function Navbar() {
   return (
@@ -27,9 +28,11 @@ function Navbar() {
         <button className="icon-button" aria-label="Carrinho">
           <FaShoppingCart />
         </button>
-        <button className="icon-button" aria-label="Perfil de Usuário">
-          <FaUser />
-        </button>
+        <Link to="/usuarios">
+          <button className="icon-button" aria-label="Perfil de Usuário">
+            <FaUser />
+          </button>
+        </Link>
       </div>
     </div>
   )
