@@ -1,0 +1,81 @@
+:root {
+  --nav-bg: #1a1a1e;
+  --nav-text: #e0e0e0;
+  --border: #3a3a40;
+  --bg-search: #2c2c34;
+  --contrast-color: rgb(192, 160, 112); 
+
+  --page-bg: #121212; 
+}
+
+.livrocard-container {
+    background-color: var(--nav-bg);
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+}
+
+.livrocard-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(192, 160, 112, 0.4); 
+}
+
+.livro-capa {
+  height: 280px;
+  background-color: var(--bg-search); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 1.1rem;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.livro-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.livro-acoes-rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid #282828;
+}
+
+.livro-selo-preco {
+    background-color: #daa520;
+    color: #1a1a1a;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.botao-adicionar {
+    background-color: var(--contrast-color);
+    color: #000000;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 10px 0;
+    transition: background-color 0.2s ease;
+}
+
+.botao-adicionar:hover {
+    background-color: var(--contrast-color);
+}

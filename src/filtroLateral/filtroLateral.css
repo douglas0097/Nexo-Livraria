@@ -1,0 +1,103 @@
+:root {
+  --nav-bg: #1a1a1e;
+  --nav-text: #e0e0e0;
+  --border: #3a3a40;
+  --bg-search: #2c2c34;
+  --contrast-color: rgb(192, 160, 112); 
+
+  --page-bg: #121212; 
+}
+
+.filtro-bl-container {
+    background-color: var(--nav-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.filtro-bl-titulo {
+    color: var();
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+}
+
+.filtro-bl-subtitulo {
+    color: #a0a0a0;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.filtro-bl-input-texto {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.filtro-bl-input-texto::placeholder {
+    color: #888;
+}
+
+.filtro-bl-input-texto:focus {
+    border-color: var(--contrast-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(70, 200, 255, 0.5);
+}
+
+.filtro-bl-checkbox-item {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    transition: color 0.2s;
+}
+
+.filtro-bl-checkbox-item:hover {
+    color: var(--contrast-color);
+}
+
+.filtro-bl-checkbox-item input[type="checkbox"] {
+    margin-right: 10px;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #777;
+    border-radius: 3px;
+    background-color: transparent;
+    vertical-align: middle;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.filtro-bl-checkbox-item input[type="checkbox"]:checked {
+    border-color: var(--contrast-color);
+    background-color: var(--contrast-color);
+}
+
+.filtro-bl-checkbox-item input[type="checkbox"]:checked::after {
+    content: '';
+    width: 5px;
+    height: 10px;
+    border: solid var(--border);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 1px;
+    left: 4px;
+}
+
+.filtro-secao-container{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
