@@ -1,15 +1,15 @@
 import './Login.css';
 import logoImage from '../assets/logo_nexo.png';
-import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react'; // Importar useState e React
-import axios from 'axios'; // Importar Axios
+import React, { useState } from 'react'; 
+import axios from 'axios'; 
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
     // 1. Gerenciamento de Estado para Formulário
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    const [erro, setErro] = useState(''); // Para exibir mensagens de erro da API
-    const [loading, setLoading] = useState(false); // Para gerenciar o estado de carregamento
+    const [erro, setErro] = useState(''); 
+    const [loading, setLoading] = useState(false)
 
     const linkHome = useNavigate();
 
@@ -21,7 +21,6 @@ const Login = () => {
 
         try {
             // Requisição POST para o backend
-            // Usamos '/api/...' graças à configuração de proxy no vite.config.ts
             const { data } = await axios.post('/api/usuarios/login', { 
                 email, 
                 senha 
@@ -73,7 +72,9 @@ const Login = () => {
                             required
                         />
                         <a href="" className='text-link-recuperar'>Esqueceu a Senha?</a>
-                        <span className='text-link-criar'>Não tem conta ainda? <a href="">Crie agora mesmo!</a></span>
+                        <span className='text-link-criar'>
+                            Não tem conta ainda? <Link to="/registro">Crie agora mesmo!</Link>
+                        </span>
                         
                         <button type="submit" disabled={loading}>
                             {loading ? 'Entrando...' : 'Entrar'}
