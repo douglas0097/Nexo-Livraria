@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import logoImage from '../assets/logo_nexo.png';
-import './Registro.css'; 
+import './registro.css'; 
 
 const Registro = () => {
   const [nome, setNome] = useState('');

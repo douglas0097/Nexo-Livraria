@@ -1,7 +1,40 @@
+import { useState, useEffect } from 'react';
 import Navbar from '../navbar/navbar';
+import apiClient from '../api/apicClient'; 
 import './home.css';
 
+// 1. Importar o componente LivroCard e a interface
+import LivroCard from '../livroCard/livroCard';
+import type { Livro } from '../livrosInterface/livrosInterface'; 
+
 const HomePage = () => {
+  // 2. Estados para armazenar os dados e o status da busca
+  const [livros, setLivros] = useState<Livro[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // 3. Função para buscar os livros na API
+  useEffect(() => {
+    const fetchLivros = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        // Chamada para o endpoint público /api/livros
+        const { data } = await apiClient.get('/livros');       
+
+        setLivros(data);
+      } catch (err: any) {
+        console.error("Erro ao buscar livros:", err);
+        setError("Não foi possível carregar os livros. Tente novamente mais tarde.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLivros();
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -22,56 +55,22 @@ const HomePage = () => {
         <section className="content-section">
           <h2 className="section-title">Destaques da Semana</h2>
 
+          {/* 4. Tratamento de Estado: Loading/Erro/Dados */}
+          {loading && <p className="loading-message">Carregando destaques...</p>}
+          
+          {error && <p className="error-message">{error}</p>}
+          
+          {livros.length === 0 && !loading && !error && (
+            <p className="no-books-message">Nenhum livro encontrado no catálogo.</p>
+          )}
+
           <div className="book-grid">
-            <div className="book-card">
-              <div className="book-cover-placeholder">
-                <span>Capa</span>
-              </div>
-              <div className="book-info">
-                <h3>O Nome do Vento</h3>
-                <p>Patrick Rothfuss</p>
-              </div>
-            </div>
+            {livros.map((livro) => (
+              <LivroCard key={livro.id} livro={livro} />
+            ))}
+            
+            {/* Remova os placeholders de <div className="book-card">...</div> */}
 
-            <div className="book-card">
-              <div className="book-cover-placeholder">
-                <span>Capa</span>
-              </div>
-              <div className="book-info">
-                <h3>Mistborn: O Império Final</h3>
-                <p>Brandon Sanderson</p>
-              </div>
-            </div>
-
-            <div className="book-card">
-              <div className="book-cover-placeholder">
-                <span>Capa</span>
-              </div>
-              <div className="book-info">
-                <h3>A Roda do Tempo</h3>
-                <p>Robert Jordan</p>
-              </div>
-            </div>
-
-            <div className="book-card">
-              <div className="book-cover-placeholder">
-                <span>Capa</span>
-              </div>
-              <div className="book-info">
-                <h3>O Ritual</h3>
-                <p>Adam Nevill</p>
-              </div>
-            </div>
-
-              <div className="book-card">
-              <div className="book-cover-placeholder">
-                <span>Capa</span>
-              </div>
-              <div className="book-info">
-                <h3>O caminho dos Reis</h3>
-                <p>Brandon Sanderson</p>
-              </div>
-            </div>
           </div>
         </section>
       </div>
