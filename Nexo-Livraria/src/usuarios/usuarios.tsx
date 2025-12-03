@@ -3,8 +3,11 @@ import Navbar from '../navbar/navbar';
 import {FaUserCircle, FaBoxOpen, FaHeart, FaCog, FaSignOutAlt,} from 'react-icons/fa';
 import './usuarios.css';
 import { useNavigate } from 'react-router-dom';
+import { useCarrinho } from '../context/CarrinhoContext'; 
 
 type ActiveTab = 'pedidos' | 'configuracoes' | 'desejos'; 
+
+const CARRINHO_STORAGE_KEY = 'nexoLivrariaCarrinho';
 
 // 1. Interface para tipar as informações do usuário salvas no localStorage
 interface UserInfo {
@@ -15,15 +18,15 @@ interface UserInfo {
 
 function Usuarios() {
     const navigate = useNavigate();
+    const { limparCarrinho } = useCarrinho();
     const [activeTab, setActiveTab] = useState<ActiveTab>('configuracoes');
     // 2. Estado para armazenar as informações do usuário logado
     const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
 
     // 3. Função de Logout
     const handleLogout = () => {
-        // Remove o token e as informações do armazenamento local
         localStorage.removeItem('usuarioInfo'); 
-        // Redireciona o usuário para a tela de login (rota raiz)
+        limparCarrinho();
         navigate('/'); 
     };
 
@@ -32,11 +35,9 @@ function Usuarios() {
         const storedUserInfo = localStorage.getItem('usuarioInfo');
         if (storedUserInfo) {
             try {
-                // Tenta fazer o parse do JSON e salvar no estado
                 setUserInfo(JSON.parse(storedUserInfo));
             } catch (error) {
                 console.error("Erro ao fazer parse do userInfo:", error);
-                // Se houver erro no parse (JSON inválido), limpa e desloga
                 handleLogout();
             }
         } else {
@@ -114,7 +115,6 @@ function Usuarios() {
                         
                         <div className="user-info">
                             <FaUserCircle className="user-avatar" />
-                            {/* 5. Exibir dados dinâmicos */}
                             <h3 className="user-name">{userInfo.nome}</h3> 
                             <p className="user-email">{userInfo.email}</p>
                         </div>
@@ -143,7 +143,6 @@ function Usuarios() {
                             </button>
                         </nav>
 
-                        {/* 6. Botão de Logout com função */}
                         <button className="logout-button" onClick={handleLogout}> 
                             <FaSignOutAlt /> <span>Sair</span>
                         </button>

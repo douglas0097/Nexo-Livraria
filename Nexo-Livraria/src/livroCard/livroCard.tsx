@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Livro } from '../livrosInterface/livrosInterface';
+import { useCarrinho } from '../context/CarrinhoContext'; 
 import './livroCard.css';
 
 interface LivroCardProps {
@@ -7,6 +8,13 @@ interface LivroCardProps {
 };
 
 const LivroCard: React.FC<LivroCardProps> = ({ livro }) => {
+    const { adicionarItem } = useCarrinho();
+
+    const handleAdicionar = () => {
+        adicionarItem(livro);
+        alert(`"${livro.titulo}" adicionado ao carrinho!`);
+    };
+
     return (
         <div className="livrocard-container">
             
@@ -23,7 +31,7 @@ const LivroCard: React.FC<LivroCardProps> = ({ livro }) => {
                         R$ {livro.preco.toFixed(2)}
                     </span>
                     
-                    <button className="botao-adicionar">
+                    <button className="botao-adicionar" onClick={handleAdicionar}>
                         Adicionar ao Carrinho
                     </button>
                 </div>

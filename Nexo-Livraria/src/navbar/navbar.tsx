@@ -25,9 +25,14 @@ function Navbar() {
         <button className="icon-button" aria-label="Notificações">
           <FaBell />
         </button>
-        <button className="icon-button" aria-label="Carrinho">
-          <FaShoppingCart />
-        </button>
+
+        <Link to="/carrinho">
+
+          <button className="icon-button" aria-label="Carrinho">
+            <FaShoppingCart />
+          </button>
+        </Link>
+
         <Link to="/usuarios">
           <button className="icon-button" aria-label="Perfil de Usuário">
             <FaUser />

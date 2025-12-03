@@ -20,7 +20,6 @@ const HomePage = () => {
         setLoading(true);
         setError(null);
 
-        // Chamada para o endpoint público /api/livros
         const { data } = await apiClient.get('/livros');       
 
         setLivros(data);
@@ -55,7 +54,6 @@ const HomePage = () => {
         <section className="content-section">
           <h2 className="section-title">Destaques da Semana</h2>
 
-          {/* 4. Tratamento de Estado: Loading/Erro/Dados */}
           {loading && <p className="loading-message">Carregando destaques...</p>}
           
           {error && <p className="error-message">{error}</p>}
@@ -66,11 +64,9 @@ const HomePage = () => {
 
           <div className="book-grid">
             {livros.map((livro) => (
-              <LivroCard key={livro.id} livro={livro} />
+              <LivroCard key={livro._id} livro={livro} />
             ))}
             
-            {/* Remova os placeholders de <div className="book-card">...</div> */}
-
           </div>
         </section>
       </div>
